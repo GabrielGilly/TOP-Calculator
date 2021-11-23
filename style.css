@@ -1,0 +1,41 @@
+html{
+    font-family: monospace;
+}
+#calculator{
+    width: 208px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    background: black;
+    margin: 5px solid black;
+}
+#screen{
+    width: 204px;
+    height: 40px;
+    border: solid white 1px;
+    color:ivory;
+    font-size: 30px;
+    text-align: right;
+}
+button{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    margin: 1px;
+    box-shadow: none;
+    outline: inherit;
+    padding: 0;
+    font: inherit;
+}
+.number{
+    background: ivory;
+}
+.operator{
+    background: grey;
+}
+.function{
+    background: grey;
+}
+#btn0, #btnEq{
+    width: 102px;
+}
