@@ -9,10 +9,15 @@ html{
     background: black;
     margin: 5px solid black;
 }
-#screen{
+#screen-container{
     width: 204px;
     height: 40px;
     border: solid white 1px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+#screen{
     color:ivory;
     font-size: 30px;
     text-align: right;
