@@ -2,7 +2,7 @@
 
 // App variable
 const calcData={
-    number1:'',
+    number1:'hello',
     number2:'',
     operator:'',
     result:'',
@@ -29,8 +29,8 @@ const calcProcess = function (element){
     // what type of button had been pressed
     switch (calcData.step){// the step variable help to know at which stage of the process we are
         case 0: // enter number #1
-            if (element.classList=='number'){inputData(element,1);};//update #1
-            if (element.classList=='operator'){};//select operator
+            if (element.classList=='btn number'){inputData(element,1);};//update #1
+            if (element.classList=='btn operator'){inputData(element,'operator')};//select operator
             break;
         case 1: // enter number #2
             if (element.classList='number'){inputData(element,2)};//update #2
@@ -48,9 +48,9 @@ const screenUpdate =function(content){
 
 // Number function used to type and update the content of calcData
 const inputData = function(content,number){
-    console.log(content.id);
-    if(number=1){calcData.number1= calcData.number1 + content.textContent};
-    if(number=2){calcData.number2=+ content};
+    if(number==1){calcData.number1=+ content.textContent};
+    if(number==2){calcData.number2=+ content};
+    if(number=='operator'){calcData.operator= content.textContent}
 };
 
 // Execute function that return the result of the operation
