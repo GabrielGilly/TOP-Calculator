@@ -34,9 +34,11 @@ const calcProcess = function (element){
             inputData(element,'operator'); // update operator
             calcData.step = 2;//move step selector for next step
         };
+        screenUpdate(calcData.number1);
     }else if(calcData.step == 2){//ready to enter number 2 in same if so it cannot enter #1 and #2 on the same entry    
         if (element.classList == 'btn number'){inputData(element,'2')};//update #2
         if (element.classList == 'btn operator' && calcData.number2 != ''){calcData.step=3}; // here we go see next if
+        screenUpdate(calcData.number2);
     };
     // if we get step=3 that mean we can now display the result
     if(calcData.step == 3){
@@ -60,7 +62,8 @@ const calcProcess = function (element){
 
 // Display function to update the screen content
 const screenUpdate =function(content){
-
+    console.log(`Screen updated with ${content}`);
+    document.getElementById('screen').textContent= content.toString();
 };
 
 // Number function used to type and update the content of calcData
