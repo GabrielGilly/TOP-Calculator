@@ -2,11 +2,11 @@
 
 // App variable
 const calcData={
-    number1:'hello',
+    number1:'',
     number2:'',
     operator:'',
     result:'',
-    step:0,
+    step:1,
 }
 console.log(calcData);
 
@@ -27,17 +27,34 @@ allButtons.forEach((button)=> {
 // Main function called when event listener are activated
 const calcProcess = function (element){
     // what type of button had been pressed
-    switch (calcData.step){// the step variable help to know at which stage of the process we are
-        case 0: // enter number #1
-            if (element.classList=='btn number'){inputData(element,1);};//update #1
-            if (element.classList=='btn operator'){inputData(element,'operator')};//select operator
-            break;
-        case 1: // enter number #2
-            if (element.classList='number'){inputData(element,2)};//update #2
-            break;
-        case 2: // calculate result and return on display
-            break;
+    console.log(`step: ${calcData.step} entry of: ${element.id}`)
+    if(calcData.step == 1){// enter number #1
+        if (element.classList == 'btn number'){inputData(element,'1')};//update #1
+        if (element.classList == 'btn operator' && calcData.number1 !=''){ // make sure #1 exist before entering the operator
+            inputData(element,'operator'); // update operator
+            calcData.step = 2;//move step selector for next step
+        };
+    }else if(calcData.step == 2){//ready to enter number 2 in same if so it cannot enter #1 and #2 on the same entry    
+        if (element.classList == 'btn number'){inputData(element,'2')};//update #2
+        if (element.classList == 'btn operator' && calcData.number2 != ''){calcData.step=3}; // here we go see next if
     };
+    // if we get step=3 that mean we can now display the result
+    if(calcData.step == 3){
+        console.log(`we are now at step 3`);
+        execute(); // get the result calculated
+        screenUpdate(calcData.result); //update the screen with the result
+        if(element.id == 'Eq'){
+            calcData.operator= ''; //rest operator
+            calcData.number1=''; // reset number 1
+            calcData.number2 = ''; //reset
+            calcData.step=1; // reset step to beginning
+        }else{
+            calcData.number1 = calcData.result; // get #number 1 updated for next calculation
+            calcData.operator = element.textContent; //the new operator is now in base
+            calcData.step=2; // waiting for entry of number #2
+            calcData.number2 = ''; // reset for entry
+        };
+    };  
     console.log(calcData);
 };
 
@@ -48,14 +65,27 @@ const screenUpdate =function(content){
 
 // Number function used to type and update the content of calcData
 const inputData = function(content,number){
-    if(number==1){calcData.number1=+ content.textContent};
-    if(number==2){calcData.number2=+ content};
-    if(number=='operator'){calcData.operator= content.textContent}
+    console.log(`data entry to ${number} : ${content.id}`);
+    if(number=='1'){calcData.number1= calcData.number1 + content.textContent};
+    if(number=='2'){calcData.number2= calcData.number2 + content.textContent};
+    if(number=='operator'){calcData.operator= content.textContent};
 };
 
 // Execute function that return the result of the operation
-const execute = function(number1,number2,operator){
-
+const execute = function(){
+    number1=parseFloat(calcData.number1);
+    number2=parseFloat(calcData.number2);
+    // that all data are there
+    if (calcData.number1 != '' && calcData.number2 != '' && calcData.operator != ''){
+    //check that we are not dividing by 0
+        if(calcData.number2 == 0 && operator == '/'){calcData.result='ERROR, NO DIV/0'};
+        if(calcData.operator == '+'){calcData.result = number1 + number2};
+        if(calcData.operator == '-'){calcData.result = number1 - number2};
+        if(calcData.operator == '*'){calcData.result = number1 * number2};
+        if(calcData.operator == '/'){calcData.result = number1 / number2};
+        console.log(`calculation executed successfully ${calcData.number1} ${calcData.operator} ${calcData.number2 } = ${calcData.result}`)
+        //update number 1 as the result in case the user want to continue his operations
+    }else{console.log(`error data missing in calcData ${calcData}`)};
 };
 
 // allClear function
