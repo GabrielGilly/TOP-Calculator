@@ -81,7 +81,7 @@ const execute = function(){
     // that all data are there
     if (calcData.number1 != '' && calcData.number2 != '' && calcData.operator != ''){
     //check that we are not dividing by 0
-        if(calcData.number2 == 0 && operator == '/'){calcData.result='ERROR, NO DIV/0'};
+        if(number2 == 0 && calcData.operator == '/'){calcData.result='ERROR, NO DIV/0'};
         if(calcData.operator == '+'){calcData.result = number1 + number2};
         if(calcData.operator == '-'){calcData.result = number1 - number2};
         if(calcData.operator == '*'){calcData.result = number1 * number2};
