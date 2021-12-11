@@ -10,7 +10,7 @@ const calcData={
 }
 console.log(calcData);
 
-// Create eventlistner in all number and operator buttons
+// Create eventListener in all number and operator buttons
 const calculator = document.getElementById('calculator');
 const allButtons = calculator.querySelectorAll('.btn');
 console.log(allButtons);
@@ -69,9 +69,17 @@ const screenUpdate =function(content){
 // Number function used to type and update the content of calcData
 const inputData = function(content,number){
     console.log(`data entry to ${number} : ${content.id}`);
-    if(number=='1'){calcData.number1= calcData.number1 + content.textContent};
-    if(number=='2'){calcData.number2= calcData.number2 + content.textContent};
-    if(number=='operator'){calcData.operator= content.textContent};
+    if(number=='1'){
+        if (content.textContent == '.' && !calcData.number1.includes('.') || content.textContent != '.'){
+            calcData.number1= calcData.number1 + content.textContent
+        };
+    };
+    if(number=='2'){
+        if (content.textContent == '.' && !calcData.number2.includes('.') || content.textContent != '.'){
+            calcData.number2= calcData.number2 + content.textContent
+        };
+    };
+        if(number=='operator'){calcData.operator= content.textContent};
 };
 
 // Execute function that return the result of the operation
@@ -106,15 +114,13 @@ const clearAll = function(){
 const characterClear = function(){
     console.log(`function clear called`);
     if ( calcData.step == 1 && calcData.number1!= ''){
-        console.log(`step1 and non nule`);
+        console.log(`step1 and non nul`);
         calcData.number1 = calcData.number1.slice(0, calcData.number1.length - 1)
         screenUpdate(calcData.number1);
-    }
+    };
     if ( calcData.step == 2 && calcData.number2!= ''){
-        console.log(`step2 and non nule`);
+        console.log(`step2 and non nul`);
         calcData.number2 = calcData.number2.slice(0, calcData.number2.length - 1)
         screenUpdate(calcData.number2);
-    }
-
+    };
 };
-

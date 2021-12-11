@@ -13,7 +13,7 @@ Create calculator with an HTML interface that provided the following features:
 - [x] Round answer to fit the screen
 - [ ] Add a `.` function to enter float number max 1 float
 - [ ] Sequence calculation, consider second operator as `=` and use the result as number #1
-- [ ] ClearAll button clear the calculator data
+- [ x ClearAll button clear the calculator data
 - [ ] Clear button clear current entry number
 - [ ] Add keyboard support
 
@@ -26,7 +26,7 @@ Create calculator with an HTML interface that provided the following features:
 
 **Functions**
 - [x] Enter number #1 and #2 // Enter operator
-- [x] Calcul result
+- [x] Calculation result
 - [x] Display on screen
 - [x] ClearAll
 - [x] ClearCurrent
