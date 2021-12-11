@@ -103,7 +103,18 @@ const clearAll = function(){
 };
 
 // Clear function
-const clear= function(){
+const characterClear = function(){
+    console.log(`function clear called`);
+    if ( calcData.step == 1 && calcData.number1!= ''){
+        console.log(`step1 and non nule`);
+        calcData.number1 = calcData.number1.slice(0, calcData.number1.length - 1)
+        screenUpdate(calcData.number1);
+    }
+    if ( calcData.step == 2 && calcData.number2!= ''){
+        console.log(`step2 and non nule`);
+        calcData.number2 = calcData.number2.slice(0, calcData.number2.length - 1)
+        screenUpdate(calcData.number2);
+    }
 
 };
 
