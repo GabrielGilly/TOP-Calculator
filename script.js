@@ -93,7 +93,13 @@ const execute = function(){
 
 // allClear function
 const clearAll = function(){
-
+    calcData.number1 = '';
+    calcData.number2 = '';
+    calcData.operator = '';
+    calcData.result = '';
+    calcData.step = 1;
+    console.log(`clearAll Function called`);
+    console.log(calcData);
 };
 
 // Clear function
