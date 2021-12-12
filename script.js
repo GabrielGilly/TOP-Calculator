@@ -124,3 +124,26 @@ const characterClear = function(){
         screenUpdate(calcData.number2);
     };
 };
+
+//Keyboard support
+function keyboardCall(e){
+    //Identify the element inked to the key using data-key
+    calcProcess(key);
+    const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+    if (key.id == "C"){
+        characterClear()
+    }else if (key.id == "AC"){
+        clearAll()
+    }else{
+        if (key !== undefined){ // check if there is a element linked
+            console.log(`Key pressed:${e.keyCode}, element ${key.id}`);
+            //call the main function and input the element
+            calcProcess(key);
+        }else{console.log(`key pressed not supported: ${e.keyCode}`)}
+    };
+};
+
+// add event listener for key pressed
+window.addEventListener('keydown', keyboardCall);
+
+
